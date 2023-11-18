@@ -408,10 +408,11 @@ var songlist=[
       "album_id": "50988166"
   },
   {
-      "name": "River Flows In You",
-      "artist": "Yiruma",
-      "hash": "c6c7ea6dabc0f0022a86abdc6f8d3f59",
-      "album_id": "4092305"
+    "type":"netease",
+    "id":"20110049",
+    "name":"River Flows In You",
+    "artist":"Martin Ermen",
+    album:"Kuschelklassik Piano Dreams, Vol. 2"
   },
   {
       "name": "Skyland",
@@ -506,6 +507,13 @@ var songlist=[
     "name":"Warma Is Good",
     "artist":"warma / 湯ん",
     album:"Warma Is Good"
+  },
+  {
+    "type":"netease",
+    "id":"22676167",
+    "name":"Flower Dance",
+    "artist":"DJ Okawari",
+    album:"Kaleidoscope"
   }
 ]
 
@@ -564,11 +572,6 @@ function play(id){
 
 }
 
-audio.onerror=function(){
-  if(songlist[nowsong].type=='netease'){
-    alert('版权问题，无法播放');
-  }
-}
 
 function get(url,cb,err){
   var xhr=new XMLHttpRequest();
