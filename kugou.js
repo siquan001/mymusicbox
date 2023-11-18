@@ -89,6 +89,7 @@
     return r;
   }
   window.kugou = {
-    getSongDetails
+    getSongDetails:getSongDetails,
+    parseLrc:parseLrc
   }
 }();

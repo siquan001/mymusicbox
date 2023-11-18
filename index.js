@@ -478,6 +478,34 @@ var songlist=[
       "artist": "みかん箱",
       "hash": "fd03c1c9e8dc7828591b9398f4aeef16",
       "album_id": "580860"
+  },
+  {
+    "type":"netease",
+    "id":"38019092",
+    "name":"Lifeline",
+    "artist":"Zeraphym 六翼使徒",
+    album:"生命线"
+  },
+  {
+    "type":"netease",
+    "id":"479480785",
+    "name":"Dawnbreath（α）",
+    "artist":"Aginomoto / warma",
+    album:"Dawnbreath 【ED曲】"
+  },
+  {
+    "type":"netease",
+    "id":"479483121",
+    "name":"Dawnbreath（β）",
+    "artist":"Aginomoto / warma",
+    album:"Dawnbreath 【ED曲】"
+  },
+  {
+    "type":"netease",
+    "id":"1409555991",
+    "name":"Warma Is Good",
+    "artist":"warma / 湯ん",
+    album:"Warma Is Good"
   }
 ]
 
@@ -500,19 +528,63 @@ function play(id){
     getter=null;
   } 
   ref();
-  kugou.getSongDetails(songlist[id]['hash'],songlist[id]['album_id'],function(song){
-    getter=null;
-    if(song.error){
+  if(songlist[id].type=='netease'){
+    getter=get('https://api.gumengya.com/Api/Netease?format=json&id='+songlist[id].id,function(res){
+      getter=null;
+      if(res.code==200){
+        var song=res.data;
+        document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.pic;
+        document.querySelector("#album_name").innerHTML=songlist[nowsong].album;
+        document.querySelector("#singer").innerHTML=song.author;
+        document.querySelector("#title").innerHTML=song.title;
+        audio.src=song.url;
+        LRC=kugou.parseLrc(song.lrc);
+      }else{
+        alert('歌曲获取出错！');
+      }
+    },function(){
+      getter=null;
       alert('歌曲获取出错！');
-      return;
+    })
+  }else{
+    getter=kugou.getSongDetails(songlist[id]['hash'],songlist[id]['album_id'],function(song){
+      getter=null;
+      if(song.error){
+        alert('歌曲获取出错！');
+        return;
+      }
+      document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.img;
+      document.querySelector("#album_name").innerHTML=song.album;
+      document.querySelector("#singer").innerHTML=song.artist;
+      document.querySelector("#title").innerHTML=song.songname+(song.ispriviage?'<span class="vip">VIP</span>':'');
+      audio.src=song.url;
+      LRC=song.lrc;
+    })
+  }
+
+}
+
+audio.onerror=function(){
+  if(songlist[nowsong].type=='netease'){
+    alert('版权问题，无法播放');
+  }
+}
+
+function get(url,cb,err){
+  var xhr=new XMLHttpRequest();
+  xhr.open('GET',url);
+  xhr.onreadystatechange=function(){
+    if(xhr.readyState==4&&xhr.status==200){
+      cb(JSON.parse(xhr.responseText));
     }
-    document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.img;
-    document.querySelector("#album_name").innerHTML=song.album;
-    document.querySelector("#singer").innerHTML=song.artist;
-    document.querySelector("#title").innerHTML=song.songname+(song.ispriviage?'<span class="vip">VIP</span>':'');
-    audio.src=song.url;
-    LRC=song.lrc;
-  })
+  }
+  xhr.onerror=err;
+  xhr.send();
+  return {
+    abort:function(){
+      xhr.abort();
+    }
+  }
 }
 
 function ref(){
