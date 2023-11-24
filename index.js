@@ -526,6 +526,36 @@ var songlist=[
   "artist": "千坂",
   "hash": "271b37e61a613cb5370fb993f29e762f",
   "album_id": "40992304"
+},
+{
+    "name": "甜蜜魔法",
+    "artist": "warma",
+    "hash": "a8a93be0105c2914e7357d8e45596cb1",
+    "album_id": "32929472"
+},
+{
+  "name": "Step by Step",
+  "artist": "KARUT",
+  "hash": "963a80cbd230f6e549882b23c84a4a84",
+  "album_id": "60117919"
+},
+{
+  "name": "Shed a Light",
+  "artist": "9liur",
+  "hash": "dcf08ca10355da7cddd26ccca8a8e998",
+  "album_id": "75482312"
+},
+{
+  "name": "Remember Me",
+  "artist": "Anthem Lights",
+  "hash": "07f9826ce2fb6af40cb49156156837ac",
+  "album_id": "75046002"
+},
+{
+  "name": "月下花轻舞",
+  "artist": "傅许",
+  "hash": "4f1a7cf794a27110ac8032ecf436095a",
+  "album_id": "8492070"
 }
 ]
 
