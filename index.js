@@ -514,7 +514,19 @@ var songlist=[
     "name":"Flower Dance",
     "artist":"DJ Okawari",
     album:"Kaleidoscope"
-  }
+  },
+  {
+    "name": "Warma! Yeah!",
+    "artist": "Warma、Crazy Bucket 陈楒潼",
+    "hash": "adfcf9573cece58918ad4bb9e4aa8424",
+    "album_id": "15104683"
+},
+{
+  "name": "Fragments",
+  "artist": "千坂",
+  "hash": "271b37e61a613cb5370fb993f29e762f",
+  "album_id": "40992304"
+}
 ]
 
 var nowsong=0;

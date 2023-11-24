@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="https://siquan001.github.io/fhmusic/beta/kugou.js"></script>
+    <script>
+      var nr={};
+      function s(k){
+        kugou.search(k,function(r){
+          console.log(r);
+          nr=r;
+        })
+      }
+
+      function c(i){
+        console.log({
+          name:nr.songs[i].songname,
+          artist:nr.songs[i].artist,
+          hash:nr.songs[i].id,
+          album_id:nr.songs[i].album_id
+        });
+      }
+    </script>
+  </body>
+</html>
