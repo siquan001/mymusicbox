@@ -579,31 +579,44 @@ function play(id){
   } 
   ref();
   if(songlist[id].type=='netease'){
-    getter=get('https://api.gumengya.com/Api/Netease?format=json&id='+songlist[id].id,function(res){
+    initPlayer('netease',songlist[id].id,songlist[id].album);
+  }else{
+    initPlayer('kugou',songlist[id].hash,songlist[id].album_id);
+  }
+
+}
+
+function initPlayer(k,m,n){
+  if(k=='netease'){
+    getter=get('https://api.gumengya.com/Api/Netease?format=json&id='+m,function(res){
       getter=null;
       if(res.code==200){
         var song=res.data;
         document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.pic;
-        document.querySelector("#album_name").innerHTML=songlist[nowsong].album;
+        document.querySelector("#album_name").innerHTML=n;
         document.querySelector("#singer").innerHTML=song.author;
         document.querySelector("#title").innerHTML=song.title;
         audio.src=song.url;
         LRC=kugou.parseLrc(song.lrc);
       }else{
         alert('歌曲获取出错！');
+        document.querySelector(".next").click();
       }
     },function(){
       getter=null;
       alert('歌曲获取出错！');
+      document.querySelector(".next").click();
     })
   }else{
-    getter=kugou.getSongDetails(songlist[id]['hash'],songlist[id]['album_id'],function(song){
+    getter=kugou.getSongDetails(m,n,function(song){
       getter=null;
       if(song.error){
         alert('歌曲获取出错！');
+        document.querySelector(".next").click();
         return;
       }
-      document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.img;
+      // 修复https加载http的问题
+      document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.img.replace('http://','https://');
       document.querySelector("#album_name").innerHTML=song.album;
       document.querySelector("#singer").innerHTML=song.artist;
       document.querySelector("#title").innerHTML=song.songname+(song.ispriviage?'<span class="vip">VIP</span>':'');
@@ -611,7 +624,6 @@ function play(id){
       LRC=song.lrc;
     })
   }
-
 }
 
 
@@ -721,9 +733,17 @@ range.addEventListener('touchstart',function(){
   passive:false
 })
 document.querySelector(".last").onclick=function(){
+  if(nowsong==-1){
+    rplay();
+    return;
+  } 
   play(nowsong-1<0?songlist.length-1:nowsong-1);
 }
 document.querySelector(".next").onclick=function(){
+  if(nowsong==-1){
+    rplay();
+    return;
+  } 
   play(nowsong+1>songlist.length-1?0:nowsong+1);
 }
 
@@ -733,19 +753,19 @@ function rplay(){
 var pl=document.querySelector(".playlist ul");
 songlist.forEach(function(r,i){
   var li=document.createElement('li');
-  li.innerHTML=r.name+' - '+r.artist;
+  li.innerHTML=i+' '+r.name+' - '+r.artist;
   li.onclick=function(){
     play(i);
   }
   pl.append(li);
 })
 
-rplay();
 
 document.querySelector(".item.playlistbtn").onclick=function(e){
   e.stopPropagation();
   document.querySelector(".playlist").style.display='block';
-  document.querySelector(".playlist li.act").scrollIntoView({
+  var actLi=document.querySelector(".playlist li.act");
+  actLi&&actLi.scrollIntoView({
     block:"center"
   });
 }
@@ -760,4 +780,50 @@ document.querySelector(".item.isrepeat").onclick=function(){
 
 document.onclick=function(){
   document.querySelector(".playlist").style.display='';
-}
+};
+
+/*
+?type=index&i=<歌曲歌单索引> 播放歌单内歌曲
+?type=kugou&hash=<hash>&album_id=<album_id> 从酷狗音乐获取歌曲播放
+?type=netease&id=<id> 从网易云音乐获取歌曲播放
+
+当type!=index时，会判断歌曲是否存在歌单中
+ */
+(function(){
+  var us=new URL(location.href).searchParams;
+  if(us.get('type')=='index'){
+    var i=parseInt(us.get('i'));
+    i&&!isNaN(i)&&i>=0&&i<songlist.length?play(i):rplay();
+  }else if(us.get('type')=='kugou'){
+    var h=us.get('hash');
+    var a=us.get('album_id');
+    if(!h||!a){
+      rplay();
+      return;
+    }
+    for(var i=0;i<songlist.length;i++){
+      if(songlist[i].hash==h){
+        play(i);
+        return;
+      }
+    }
+    nowsong=-1;
+    initPlayer('kugou',h,a);
+  }else if(us.get('type')=='netease'){
+    var id=us.get('id');
+    if(!id){
+      rplay();
+      return;
+    }
+    for(var i=0;i<songlist.length;i++){
+      if(songlist[i].id==id){
+        play(i);
+        return;
+      }
+    }
+    nowsong=-1;
+    initPlayer('netease',id,'');
+  }else{
+    rplay();
+  }
+})()
