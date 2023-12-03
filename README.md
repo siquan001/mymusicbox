@@ -13,6 +13,9 @@
 ?type=netease&id=<id> 
 从网易云音乐获取歌曲播放
 
+?type=url&url=<歌曲url>&title=<歌曲标题>&artist=<歌手>&album=<专辑>&img=<歌曲封面URL>
+从歌曲链接播放
+
 当type!=index时，会判断歌曲是否存在歌单中
 ```
 

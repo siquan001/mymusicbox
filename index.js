@@ -556,6 +556,12 @@ var songlist=[
   "artist": "傅许",
   "hash": "4f1a7cf794a27110ac8032ecf436095a",
   "album_id": "8492070"
+},
+{
+  "name": "别让我担心",
+  "artist": "多多poi",
+  "hash": "38c0f84dd7a22e17f67decc9949cb8d0",
+  "album_id": "78828770"
 }
 ]
 
@@ -580,22 +586,23 @@ function play(id){
   ref();
   if(songlist[id].type=='netease'){
     initPlayer('netease',songlist[id].id,songlist[id].album);
+  }else if(songlist[id].type=='url'){
+    initPlayer('url',songlist[id].title,songlist[id].artist,songlist[id].album,songlist[id].img,songlist[id].url,songlist[id].lrc??'');
   }else{
     initPlayer('kugou',songlist[id].hash,songlist[id].album_id);
   }
-
 }
 
-function initPlayer(k,m,n){
+function initPlayer(k,m,n,o,p,q,r){
   if(k=='netease'){
     getter=get('https://api.gumengya.com/Api/Netease?format=json&id='+m,function(res){
       getter=null;
       if(res.code==200){
         var song=res.data;
         document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.pic;
-        document.querySelector("#album_name").innerHTML=n;
-        document.querySelector("#singer").innerHTML=song.author;
-        document.querySelector("#title").innerHTML=song.title;
+        document.querySelector("#album_name").innerText=n;
+        document.querySelector("#singer").innerText=song.author;
+        document.querySelector("#title").innerText=song.title;
         audio.src=song.url;
         LRC=kugou.parseLrc(song.lrc);
       }else{
@@ -607,6 +614,13 @@ function initPlayer(k,m,n){
       alert('歌曲获取出错！');
       document.querySelector(".next").click();
     })
+  }else if(k=='url'){
+    document.querySelector("#album_img").src= document.querySelector("#bg_img").src=p;
+    document.querySelector("#album_name").innerText=o;
+    document.querySelector("#singer").innerText=n;
+    document.querySelector("#title").innerText=m;
+    audio.src=q;
+    LRC=kugou.parseLrc(r);
   }else{
     getter=kugou.getSongDetails(m,n,function(song){
       getter=null;
@@ -617,9 +631,12 @@ function initPlayer(k,m,n){
       }
       // 修复https加载http的问题
       document.querySelector("#album_img").src= document.querySelector("#bg_img").src=song.img.replace('http://','https://');
-      document.querySelector("#album_name").innerHTML=song.album;
-      document.querySelector("#singer").innerHTML=song.artist;
-      document.querySelector("#title").innerHTML=song.songname+(song.ispriviage?'<span class="vip">VIP</span>':'');
+      document.querySelector("#album_name").innerText=song.album;
+      document.querySelector("#singer").innerText=song.artist;
+      document.querySelector("#title").innerText=song.songname
+      if(song.ispriviage){
+        document.querySelector("#title").innerHTML+='<span class="vip">VIP</span>';
+      }
       audio.src=song.url;
       LRC=song.lrc;
     })
@@ -823,6 +840,17 @@ document.onclick=function(){
     }
     nowsong=-1;
     initPlayer('netease',id,'');
+  }else if(us.get('type')=='url'){
+    var url=us.get('url');
+    var title=us.get('title');
+    var artist=us.get('artist');
+    var album=us.get('album');
+    var img=us.get('img');
+    if(!url){
+      rplay();
+      return;
+    }
+    initPlayer('url',title,artist,album,img,url);
   }else{
     rplay();
   }
