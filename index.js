@@ -562,6 +562,12 @@ var songlist=[
   "artist": "多多poi",
   "hash": "38c0f84dd7a22e17f67decc9949cb8d0",
   "album_id": "78828770"
+},
+{
+  "name": "くうになる(feat. 可不)",
+  "artist": "MIMI、可不、初音ミク",
+  "hash": "5071de104c6a15f6a82afce0f5dffe73",
+  "album_id": "53071453"
 }
 ]
 
