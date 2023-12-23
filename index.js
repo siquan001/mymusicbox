@@ -12,12 +12,6 @@ var songlist=[
       "album_id": "68070847"
   },
   {
-      "name": "【FREE】lucky",
-      "artist": "FuGa pang",
-      "hash": "c6620b7feb698d90a853fa64bdd6e279",
-      "album_id": "38926342"
-  },
-  {
       "name": "爱的魔法",
       "artist": "晚巧",
       "hash": "7a5ec15f8aba6a2b174f7224b15956e0",
@@ -92,7 +86,7 @@ var songlist=[
   {
       "name": "寂静之空",
       "artist": "傅许",
-      "hash": "b40a282b46e21ffd044ca82460a8d7a2",
+      "hash": "8c4f47286653b608f3ca4f434b66b016",
       "album_id": "4080619"
   },
   {
@@ -204,12 +198,6 @@ var songlist=[
       "album_id": "50035997"
   },
   {
-      "name": "糖",
-      "artist": "李昕融",
-      "hash": "8e79e915aa7ff6ce50b09f6c7c522fd2",
-      "album_id": "51603850"
-  },
-  {
       "name": "晚安喵",
       "artist": "艾索",
       "hash": "aabae74a32dd9158093fe5f5529c8cb5",
@@ -272,7 +260,7 @@ var songlist=[
   {
       "name": "星河",
       "artist": "海、枫总",
-      "hash": "4c2f09ebebd4d61ff6916c35961c7a79",
+      "hash": "0de766605b7cfa738fb87c59c6141167",
       "album_id": "41892811"
   },
   {
@@ -296,7 +284,7 @@ var songlist=[
   {
       "name": "遇见 (钢琴版)",
       "artist": "文武贝",
-      "hash": "08313c5fd933116d6f8bb3b3f123e71c",
+      "hash": "5fb67b1b88f82a518120f21a4f6b515b",
       "album_id": "8568845"
   },
   {
@@ -326,7 +314,7 @@ var songlist=[
   {
       "name": "A Little Story",
       "artist": "Valentin",
-      "hash": "d0b5c18cf928671868a040d116997980",
+      "hash": "1af302122eec6fd7fea78d93d5ce1838",
       "album_id": "565498"
   },
   {
@@ -340,18 +328,6 @@ var songlist=[
       "artist": "清水準一",
       "hash": "630cb49e85e77472a40ab6f9ee76ac72",
       "album_id": "558811"
-  },
-  {
-      "name": "color-X",
-      "artist": "徐梦圆",
-      "hash": "f49d327b02027f73a83740ef09c22f0d",
-      "album_id": "14465352"
-  },
-  {
-      "name": "Empty Love",
-      "artist": "Lulleaux、Kid Princess",
-      "hash": "ee1b8c074962377de20e0bdb2d50b9e9",
-      "album_id": "36762089"
   },
   {
       "name": "Escape",
@@ -374,13 +350,13 @@ var songlist=[
   {
       "name": "I really ∞",
       "artist": "Warma",
-      "hash": "01b8c5338279d95e6ad1ca6a480b307b",
+      "hash": "425a3430286d0d10b7a5a329f6df372a",
       "album_id": "30129032"
   },
   {
       "name": "Love is gone (Justin Dai & Marvin Bootleg) (remix：Marvin)",
       "artist": "SLANDER、Dylan Matthew、Marvin",
-      "hash": "af6ba1ced9a7ae2c0306c5844425c735",
+      "hash": "d895db9fd8ca81cc8f2b9a86dd33eb10",
       "album_id": "39744265"
   },
   {
@@ -408,11 +384,11 @@ var songlist=[
       "album_id": "50988166"
   },
   {
-    "type":"netease",
-    "id":"20110049",
-    "name":"River Flows In You",
-    "artist":"Martin Ermen",
-    album:"Kuschelklassik Piano Dreams, Vol. 2"
+      "type": "netease",
+      "id": "20110049",
+      "name": "River Flows In You",
+      "artist": "Martin Ermen",
+      "album": "Kuschelklassik Piano Dreams, Vol. 2"
   },
   {
       "name": "Skyland",
@@ -441,18 +417,18 @@ var songlist=[
   {
       "name": "The Rose (尤克里里弹唱)",
       "artist": "Warma",
-      "hash": "a9c44dd42b484e8389c58e23bcfd5234",
+      "hash": "a09bd20812b4226c2261ae301aa25b12",
       "album_id": "40179832"
   },
   {
       "name": "The Truth That You Leave",
       "artist": "Pianoboy高至豪",
-      "hash": "d09301f64461dfddabe201aa70820680",
-      "album_id": "33328496"
+      "hash": "b48b0322b088e0b9b422bd498392a50b",
+      "album_id": "957376"
   },
   {
       "name": "Ticking",
-      "artist": "Tin",
+      "artist": "TIN",
       "hash": "a8e92aca58ee3607e693b2d020933a2f",
       "album_id": "39485561"
   },
@@ -469,10 +445,10 @@ var songlist=[
       "album_id": "939751"
   },
   {
-      "name": "Wellerman (Sea Shanty)",
-      "artist": "Nathan Evans",
-      "hash": "8a79c0a2dc93b3606a1d0260cdaec2fa",
-      "album_id": "41196423"
+      "name": "Wellerman",
+      "artist": "Santiano、Nathan Evans",
+      "hash": "2c236080bbb5ef7a59a1b0d92f4c07b8",
+      "album_id": "42092061"
   },
   {
       "name": "ひやむぎ、そーめん、時々うどん",
@@ -481,94 +457,94 @@ var songlist=[
       "album_id": "580860"
   },
   {
-    "type":"netease",
-    "id":"38019092",
-    "name":"Lifeline",
-    "artist":"Zeraphym 六翼使徒",
-    album:"生命线"
+      "type": "netease",
+      "id": "38019092",
+      "name": "Lifeline",
+      "artist": "Zeraphym 六翼使徒",
+      "album": "生命线"
   },
   {
-    "type":"netease",
-    "id":"479480785",
-    "name":"Dawnbreath（α）",
-    "artist":"Aginomoto / warma",
-    album:"Dawnbreath 【ED曲】"
+      "type": "netease",
+      "id": "479480785",
+      "name": "Dawnbreath（α）",
+      "artist": "Aginomoto / warma",
+      "album": "Dawnbreath 【ED曲】"
   },
   {
-    "type":"netease",
-    "id":"479483121",
-    "name":"Dawnbreath（β）",
-    "artist":"Aginomoto / warma",
-    album:"Dawnbreath 【ED曲】"
+      "type": "netease",
+      "id": "479483121",
+      "name": "Dawnbreath（β）",
+      "artist": "Aginomoto / warma",
+      "album": "Dawnbreath 【ED曲】"
   },
   {
-    "type":"netease",
-    "id":"1409555991",
-    "name":"Warma Is Good",
-    "artist":"warma / 湯ん",
-    album:"Warma Is Good"
+      "type": "netease",
+      "id": "1409555991",
+      "name": "Warma Is Good",
+      "artist": "warma / 湯ん",
+      "album": "Warma Is Good"
   },
   {
-    "type":"netease",
-    "id":"22676167",
-    "name":"Flower Dance",
-    "artist":"DJ Okawari",
-    album:"Kaleidoscope"
+      "type": "netease",
+      "id": "22676167",
+      "name": "Flower Dance",
+      "artist": "DJ Okawari",
+      "album": "Kaleidoscope"
   },
   {
-    "name": "Warma! Yeah!",
-    "artist": "Warma、Crazy Bucket 陈楒潼",
-    "hash": "adfcf9573cece58918ad4bb9e4aa8424",
-    "album_id": "15104683"
-},
-{
-  "name": "Fragments",
-  "artist": "千坂",
-  "hash": "271b37e61a613cb5370fb993f29e762f",
-  "album_id": "40992304"
-},
-{
-    "name": "甜蜜魔法",
-    "artist": "warma",
-    "hash": "a8a93be0105c2914e7357d8e45596cb1",
-    "album_id": "32929472"
-},
-{
-  "name": "Step by Step",
-  "artist": "KARUT",
-  "hash": "963a80cbd230f6e549882b23c84a4a84",
-  "album_id": "60117919"
-},
-{
-  "name": "Shed a Light",
-  "artist": "9liur",
-  "hash": "dcf08ca10355da7cddd26ccca8a8e998",
-  "album_id": "75482312"
-},
-{
-  "name": "Remember Me",
-  "artist": "Anthem Lights",
-  "hash": "07f9826ce2fb6af40cb49156156837ac",
-  "album_id": "75046002"
-},
-{
-  "name": "月下花轻舞",
-  "artist": "傅许",
-  "hash": "4f1a7cf794a27110ac8032ecf436095a",
-  "album_id": "8492070"
-},
-{
-  "name": "别让我担心",
-  "artist": "多多poi",
-  "hash": "38c0f84dd7a22e17f67decc9949cb8d0",
-  "album_id": "78828770"
-},
-{
-  "name": "くうになる(feat. 可不)",
-  "artist": "MIMI、可不、初音ミク",
-  "hash": "5071de104c6a15f6a82afce0f5dffe73",
-  "album_id": "53071453"
-}
+      "name": "Warma! Yeah!",
+      "artist": "Warma、Crazy Bucket 陈楒潼",
+      "hash": "adfcf9573cece58918ad4bb9e4aa8424",
+      "album_id": "15104683"
+  },
+  {
+      "name": "Fragments",
+      "artist": "千坂",
+      "hash": "271b37e61a613cb5370fb993f29e762f",
+      "album_id": "40992304"
+  },
+  {
+      "name": "甜蜜魔法",
+      "artist": "warma",
+      "hash": "a8a93be0105c2914e7357d8e45596cb1",
+      "album_id": "32929472"
+  },
+  {
+      "name": "Step by Step",
+      "artist": "KARUT",
+      "hash": "963a80cbd230f6e549882b23c84a4a84",
+      "album_id": "60117919"
+  },
+  {
+      "name": "Shed a Light",
+      "artist": "9liur",
+      "hash": "dcf08ca10355da7cddd26ccca8a8e998",
+      "album_id": "75482312"
+  },
+  {
+      "name": "Remember Me",
+      "artist": "Anthem Lights",
+      "hash": "07f9826ce2fb6af40cb49156156837ac",
+      "album_id": "75046002"
+  },
+  {
+      "name": "月下花轻舞",
+      "artist": "傅许",
+      "hash": "4f1a7cf794a27110ac8032ecf436095a",
+      "album_id": "8492070"
+  },
+  {
+      "name": "别让我担心",
+      "artist": "多多poi",
+      "hash": "38c0f84dd7a22e17f67decc9949cb8d0",
+      "album_id": "78828770"
+  },
+  {
+      "name": "くうになる(feat. 可不)",
+      "artist": "MIMI、可不、初音ミク",
+      "hash": "5071de104c6a15f6a82afce0f5dffe73",
+      "album_id": "53071453"
+  }
 ]
 
 var nowsong=0;
