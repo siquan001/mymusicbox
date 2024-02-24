@@ -1,4 +1,23 @@
 !function () {
+  function xhr(url, callback,err) {
+    // if(url.indexOf('api.epdd.cn')!=-1) url='https://util.siquan.tk/api/cors?url='+encodeURIComponent(url);
+    var x=new XMLHttpRequest();
+    x.open('GET', url, true);
+    x.onreadystatechange = function () {
+      if (x.readyState == 4 && x.status == 200) {
+        callback(JSON.parse(x.responseText));
+      }
+    }
+    x.onerror = function () {
+      err(x.status);
+    }
+    x.send();
+    return {
+      abort:function(){
+        x.abort()
+      }
+    }
+  }
   function jsonp(url, callback) {
     var script = document.createElement('script');
     var fnname= 'jsonp_' + Math.random().toString().replace('.', '');
@@ -25,28 +44,56 @@
     }
   }
 
+  function search(keyword, callback, page = 1) {
+    var url = 'https://mobiles.kugou.com/api/v3/search/song?format=jsonp&keyword=' + encodeURI(keyword) + '&page=' + page + '&pagesize=30&showtype=1';
+    console.log(url);
+    var a=jsonp(url, function (data) {
+      var res = {
+        total: data.data.total,
+        page: page,
+        songs: [],
+      }
+      console.log(data.data.info);
+      data.data.info.forEach(function (song) {
+        var pushed={
+          songname: song.songname,
+          artist: song.singername,
+          id: song.hash,
+          ispriviage: song.privilege >= 10,
+          album_id: song.album_id,
+        };
+        if(song.filename.match(/【歌词 : .*】/)){
+          var matched=song.filename.match(/【歌词 : .*】/);
+          pushed.title=song.filename.replace(matched[0], '');
+          pushed.matchLyric=matched[0].replace('【歌词 : ', '').replace('】', '');
+        }else{
+          pushed.title=song.filename;
+        }
+        res.songs.push(pushed);
+      });
+      callback(res);
+    })
+    return a;
+  }
+
   function getSongDetails(id, album_id, callback) {
-    var url = "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash=" + id.toUpperCase() +
-      "&dfid=2mScsJ16ucV81qLdzD238ELf&appid=1014&mid=1b211caf58cd1e1fdfea5a4657cc21f5&platid=4"+
-      (album_id?("&album_id=" + album_id):"")+
-      "&_=" + Date.now();
-    var a=jsonp(url, function (res) {
-      if(res.err_code==0){
+    var url = "https://api.gumengya.com/Api/KuGou?format=json&id=" + id.toUpperCase();
+    var a=xhr(url, function (res) {
+      if(res.code==200){
         callback({
-          title: res.data.audio_name,
-          songname: res.data.song_name,
-          artist: res.data.author_name,
-          lrc: parseLrc(res.data.lyrics),
-          url: res.data.play_url,
-          album: res.data.album_name,
-          img: res.data.img,
-          lrcstr:res.data.lyrics,
-          ispriviage: res.data.privilege >= 10,
+          title:  res.data.author+' - '+res.data.title,
+          songname: res.data.title,
+          artist: res.data.author,
+          lrc: parseLrc(res.data.lrc),
+          url: res.data.url,
+          album: '',
+          img: res.data.pic,
+          lrcstr:res.data.lrc
         });
       }else{
         callback({
           error:'获取歌曲失败',
-          code:res.err_code
+          code:res.code
         })
       }
 
@@ -89,7 +136,7 @@
     return r;
   }
   window.kugou = {
-    getSongDetails:getSongDetails,
-    parseLrc:parseLrc
+    search: search,
+    getSongDetails
   }
 }();
