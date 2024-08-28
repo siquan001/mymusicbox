@@ -163,7 +163,6 @@ body{
   top:0;
   left:0;
   opacity: .5;
-  filter: blur(10px);
 }
 .bg img{
   width: 100%;
@@ -171,6 +170,9 @@ body{
   object-fit: cover;
   object-position: center center;
   opacity: 0;
+  filter: blur(30px);
+  transform: scale(1.3);
+  transform-origin: center center;
 }
 .player .range:hover .rangebar{
   display: block;
