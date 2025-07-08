@@ -25,4 +25,4 @@
 
 ## 感谢API提供站点
 
-故梦API [api.gumengya.com](https://api.gumengya.com)
+故梦API [api.gmya.net](https://api.gmya.net)

@@ -77,7 +77,7 @@
   }
 
   function getSongDetails(id, album_id, callback) {
-    var url = "https://api.gumengya.com/Api/KuGou?format=json&id=" + id.toUpperCase();
+    var url = "https://api.gmya.net/Api/KuGou?format=json&id=" + id.toUpperCase();
     var a=xhr(url, function (res) {
       if(res.code==200){
         callback({
